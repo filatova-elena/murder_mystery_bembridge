@@ -26,9 +26,9 @@ Mortician          Professor          Psychic            Doctor
 
 | Vision | Location | Full | Partial | Blocked |
 |--------|----------|------|---------|---------|
-| **Alice** | `/vision/alice.html` | ✅ 11 visions | ✅ 11 visions | ✅ Generic msg |
-| **Cordelia** | `/vision/cordelia.html` | ⏳ Template | ⏳ Template | ✅ Generic msg |
-| **Sebastian** | `/vision/sebastian.html` | ⏳ Template | ⏳ Template | ✅ Generic msg |
+| **Alice** | `/clue/vision/alice.html` | ✅ 11 visions | ✅ 11 visions | ✅ Generic msg |
+| **Cordelia** | `/clue/vision/cordelia.html` | ⏳ Template | ⏳ Template | ✅ Generic msg |
+| **Sebastian** | `/clue/vision/sebastian.html` | ⏳ Template | ⏳ Template | ✅ Generic msg |
 
 ### Who Sees What?
 - **Psychic** → FULL visions
@@ -106,9 +106,9 @@ Characters (12 files):
   character/*.html        Each stores character name
 
 Visions (3 files):
-  vision/alice.html       ✅ Complete (11 visions)
-  vision/cordelia.html    ⏳ Template ready
-  vision/sebastian.html   ⏳ Template ready
+  clue/vision/alice.html       ✅ Complete (11 visions)
+  clue/vision/cordelia.html    ⏳ Template ready
+  clue/vision/sebastian.html   ⏳ Template ready
 
 Clues (expand as needed):
   clue/template.html      Example with all characters
@@ -180,7 +180,7 @@ Edit `index.html`:
 3. Add link in `index.html`
 
 ### Add Vision Content
-1. Open `vision/cordelia.html`
+1. Open `clue/vision/cordelia.html`
 2. Replace `fullVisions` array (11 items)
 3. Replace `partialVisions` array (11 items)
 

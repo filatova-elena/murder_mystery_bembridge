@@ -67,9 +67,9 @@ character/professor.html       character/psychic.html        character/doctor.ht
 
 ### Vision Pages (3 Total - Alice Complete, Others Have Templates)
 ```
-vision/alice.html       → ✅ COMPLETE (11 detailed visions per access level)
-vision/cordelia.html    → ⏳ Template structure ready
-vision/sebastian.html   → ⏳ Template structure ready
+clue/vision/alice.html       → ✅ COMPLETE (11 detailed visions per access level)
+clue/vision/cordelia.html    → ⏳ Template structure ready
+clue/vision/sebastian.html   → ⏳ Template structure ready
 ```
 
 ### Clue Pages (Expandable - Template Provided)
@@ -177,29 +177,29 @@ Small Phone (<400px) → 2-column character grid
 ### Scenario 2: Vision Access Control
 ```
 With Psychic selected:
-1. Visit /vision/alice.html → FULL detailed vision
-2. Visit /vision/alice.html again → Vision 2 (incremented)
+1. Visit /clue/vision/alice.html → FULL detailed vision
+2. Visit /clue/vision/alice.html again → Vision 2 (incremented)
 3. Counter shows "Vision 2 of 11"
 
 With Baker selected:
 1. Clear localStorage
 2. Visit /character/baker.html
-3. Visit /vision/alice.html → PARTIAL fragmented vision
+3. Visit /clue/vision/alice.html → PARTIAL fragmented vision
 4. Different text content
 
 With Doctor selected:
 1. Clear localStorage
 2. Visit /character/doctor.html
-3. Visit /vision/alice.html → BLOCKED generic message
+3. Visit /clue/vision/alice.html → BLOCKED generic message
 4. Shows: "You sense a cold presence..."
 ```
 
 ### Scenario 3: Vision Counter Reset
 ```
 1. Set character to Psychic
-2. Visit /vision/alice.html 12 times
+2. Visit /clue/vision/alice.html 12 times
 3. Should cycle: 1, 2, 3... 11, 12(→1), 2...
-4. Visit /vision/cordelia.html 3 times
+4. Visit /clue/vision/cordelia.html 3 times
 5. Should show: 1, 2, 3 (independent counter)
 ```
 
@@ -250,7 +250,7 @@ npx serve                          # Node.js option
 1. **Character Pages**: Edit `character/baker.html` as template
 2. **Styling**: Edit variables in `assets/style.css`
 3. **Functions**: View `assets/script.js` - all well-commented
-4. **Visions**: Copy from `vision/alice.html` structure
+4. **Visions**: Copy from `clue/vision/alice.html` structure
 
 ### If You Want to Understand the Game
 1. Read PROJECT_SUMMARY.md - explains the design
@@ -279,7 +279,7 @@ npx serve                          # Node.js option
 
 ### Add Vision Content
 ```
-1. Open vision/cordelia.html
+1. Open clue/vision/cordelia.html
 2. Edit fullVisions array (replace 11 items)
 3. Edit partialVisions array (replace 11 items)
 4. Keep the same structure (array of strings)

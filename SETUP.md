@@ -29,7 +29,7 @@ serve
 ### Test Path 1: Psychic Character (Full Vision Access)
 1. Visit `http://localhost:8000/character/psychic.html`
 2. Click "Begin Investigation"
-3. Open `http://localhost:8000/vision/alice.html` multiple times
+3. Open `http://localhost:8000/clue/vision/alice.html` multiple times
 4. **Expected**: You should see detailed visions, incrementing from 1-11
 5. After vision 11, it loops back to 1
 
@@ -37,22 +37,22 @@ serve
 1. Clear browser storage: Open DevTools → Storage → Delete all
 2. Visit `http://localhost:8000/character/baker.html`
 3. Click "Begin Investigation"
-4. Open `http://localhost:8000/vision/alice.html` multiple times
+4. Open `http://localhost:8000/clue/vision/alice.html` multiple times
 5. **Expected**: You should see fragmented visions (different text), incrementing 1-11
 
 ### Test Path 3: Doctor Character (Blocked Vision)
 1. Clear browser storage
 2. Visit `http://localhost:8000/character/doctor.html`
 3. Click "Begin Investigation"
-4. Open `http://localhost:8000/vision/alice.html`
+4. Open `http://localhost:8000/clue/vision/alice.html`
 5. **Expected**: Generic message: "You sense a cold presence..."
 
 ### Test Path 4: Multiple Visions
 1. Set character to Psychic
 2. Visit each vision multiple times:
-   - `http://localhost:8000/vision/alice.html` (increments 1-11)
-   - `http://localhost:8000/vision/cordelia.html` (increments 1-11)
-   - `http://localhost:8000/vision/sebastian.html` (increments 1-11)
+   - `http://localhost:8000/clue/vision/alice.html` (increments 1-11)
+   - `http://localhost:8000/clue/vision/cordelia.html` (increments 1-11)
+   - `http://localhost:8000/clue/vision/sebastian.html` (increments 1-11)
 3. **Expected**: Each vision has independent counters
 
 ---
@@ -92,9 +92,9 @@ You can use any QR code generator. Create codes pointing to:
 - (etc. for each character)
 
 **Vision QR Codes (place around venue):**
-- Alice: `https://your-domain.com/vision/alice.html`
-- Cordelia: `https://your-domain.com/vision/cordelia.html`
-- Sebastian: `https://your-domain.com/vision/sebastian.html`
+- Alice: `https://your-domain.com/clue/vision/alice.html`
+- Cordelia: `https://your-domain.com/clue/vision/cordelia.html`
+- Sebastian: `https://your-domain.com/clue/vision/sebastian.html`
 
 ### Recommended QR Generators
 - https://qr-code-generator.com/
@@ -157,7 +157,7 @@ Edit in `assets/style.css`:
 
 ### Add New Visions
 1. Create `vision/newvision.html`
-2. Copy from `vision/alice.html`
+2. Copy from `clue/vision/alice.html`
 3. Update vision text arrays
 4. Add to `script.js` access level definitions
 

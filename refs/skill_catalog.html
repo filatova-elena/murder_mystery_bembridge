@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Catalog - Reference Guide</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .skill-group {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid #DAA520;
+        }
+        .skill-header {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #DAA520;
+            font-weight: bold;
+        }
+        .skill-description {
+            margin-bottom: 15px;
+            color: #E8D5B7;
+            font-style: italic;
+        }
+        .access-level {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(138, 115, 85, 0.2);
+            border-radius: 4px;
+        }
+        .access-level h4 {
+            color: #DAA520;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        .access-level p {
+            color: #F5E6D3;
+            margin: 5px 0;
+        }
+        .subgroup {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 2px solid #8B7355;
+        }
+        .subgroup-header {
+            font-size: 1.2em;
+            color: #DAA520;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: #DAA520;
+            border-bottom: 3px solid #DAA520;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .intro {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(212, 165, 116, 0.1);
+            border-left: 3px solid #DAA520;
+            color: #E8D5B7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Skill Catalog - Reference Guide</h1>
+    
+    <div class="intro">
+        <p><strong>Note:</strong> This catalog lists all available skills and their access levels (Expert/Basic). Character-specific skill assignments are documented on individual character cards, not in this reference.</p>
+        <p style="margin-top: 15px;"><strong>Skill Categories:</strong></p>
+        <ul style="margin-top: 10px; padding-left: 20px;">
+            <li><strong style="color: #DAA520;">🔑 Key Skills</strong> - Essential to solving the mystery (botanical, spiritual, rumors)</li>
+            <li><strong style="color: #8B7355;">📚 Secondary Skills</strong> - Helpful context and supplementary information (medical, legal, history)</li>
+            <li><strong style="color: #DAA520;">👥 Personal</strong> - Family and personal history knowledge (personal_montrose, personal_crane, personal_romano, personal_whitmore, personal_sullivan)</li>
+        </ul>
+    </div>
+
+    <!-- BOTANICAL -->
+    <div class="skill-group">
+        <div class="skill-header">🌿 botanical <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[KEY]</span></div>
+        <div class="skill-description">Chemistry, botany, toxicology, herbology</div>
+        <p style="color: #F5E6D3;">Plant identification, herbal knowledge, extraction methods, chemical compounds, poison knowledge</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Complete botanical expertise: scientific classification, extraction methods, chemical analysis, toxicology</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Intuitive or practical knowledge: basic plant recognition, culinary herb knowledge, danger recognition</p>
+        </div>
+    </div>
+
+    <!-- SPIRITUAL -->
+    <div class="skill-group">
+        <div class="skill-header">🔮 spiritual <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[KEY]</span></div>
+        <div class="skill-description">Psychic abilities, intuitive sensing, emotional connections</div>
+        <p style="color: #F5E6D3;">Psychic abilities, emotional sensing, spiritual connections, intuitive recognition</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Complete spiritual abilities: full vision access, clear communication with spirits, detailed psychic insights</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Limited spiritual connection: fragmented visions, emotional impressions, intuitive sensing</p>
+        </div>
+    </div>
+
+    <!-- RUMORS -->
+    <div class="skill-group">
+        <div class="skill-header">🗝️ rumors <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[KEY]</span></div>
+        <div class="skill-description">Access to locked rumor treasure chests</div>
+        <p style="color: #F5E6D3;">Physical access to treasure chests containing rumor cards. Rumors are distributed in locked chests around the venue.</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Receive keys to unlock rumor treasure chests. Can access all locked rumor sources independently.</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Can read and trade rumor cards once obtained, but cannot unlock treasure chests. Must work with Expert characters to access locked rumors.</p>
+        </div>
+    </div>
+
+    <!-- MEDICAL -->
+    <div class="skill-group">
+        <div class="skill-header">⚕️ medical <span style="color: #8B7355; font-size: 0.7em; font-weight: normal;">[SECONDARY]</span></div>
+        <div class="skill-description">Medical, forensic, clinical</div>
+        <p style="color: #F5E6D3;">Clinical analysis, pharmaceutical knowledge, crime scene analysis, injury patterns, blood splatter, cause of death determination</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Complete medical and forensic expertise: detailed analysis, pattern recognition, professional medical knowledge</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Basic medical understanding or limited forensic knowledge</p>
+        </div>
+    </div>
+
+    <!-- LEGAL -->
+    <div class="skill-group">
+        <div class="skill-header">⚖️ legal <span style="color: #8B7355; font-size: 0.7em; font-weight: normal;">[SECONDARY]</span></div>
+        <div class="skill-description">Financial, legal, estate law, trust documents</div>
+        <p style="color: #F5E6D3;">Estate law, trust documents, financial records analysis, legal interpretation, inheritance law</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Complete legal and financial expertise: detailed document analysis, legal interpretation, financial records</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Basic legal understanding or limited financial knowledge</p>
+        </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="skill-group">
+        <div class="skill-header">📜 history <span style="color: #8B7355; font-size: 0.7em; font-weight: normal;">[SECONDARY]</span></div>
+        <div class="skill-description">Art history, provenance, authentication, craftsmanship, historical research, investigation, cartography, journalism</div>
+        <p style="color: #F5E6D3;">Art history, artifact evaluation, document authentication, handwriting recognition, provenance research, document research, timeline reconstruction, map reading, measurement analysis, source verification, archival knowledge</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Complete historical and investigative expertise: professional research, authentication, detailed analysis</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Basic historical knowledge, research skills, or specialized areas (e.g., journalism, cartography)</p>
+        </div>
+    </div>
+
+    <!-- PERSONAL_MONTROSE -->
+    <div class="skill-group">
+        <div class="skill-header">👥 personal_montrose <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[PERSONAL]</span></div>
+        <div class="skill-description">Montrose family, Cordelia Montrose, Montrose estate, and family history</div>
+        <p style="color: #F5E6D3;">Knowledge about the Montrose family, Cordelia Montrose, Montrose estate, and family history</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Direct family connection: complete knowledge of Montrose family history, estate, and family members</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Indirect knowledge: professional connections, recipes, or relationship-based knowledge</p>
+        </div>
+    </div>
+
+    <!-- PERSONAL_CRANE -->
+    <div class="skill-group">
+        <div class="skill-header">👥 personal_crane <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[PERSONAL]</span></div>
+        <div class="skill-description">Crane family, Sebastian Crane, Thaddeus Crane, and family history</div>
+        <p style="color: #F5E6D3;">Knowledge about the Crane family, Sebastian Crane, Thaddeus Crane, and family history</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Direct family connection: complete knowledge of Crane family history, medical legacy, and family members</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Professional or indirect knowledge: medical records, professional connections</p>
+        </div>
+    </div>
+
+    <!-- PERSONAL_ROMANO -->
+    <div class="skill-group">
+        <div class="skill-header">👥 personal_romano <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[PERSONAL]</span></div>
+        <div class="skill-description">Romano family, Frankie Romano, smuggling operations, and business connections</div>
+        <p style="color: #F5E6D3;">Knowledge about the Romano family, Frankie Romano, smuggling operations, and business connections</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Direct family connection: complete knowledge of Romano family, business operations, and smuggling networks</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Research-based or indirect knowledge: historical research, investigative journalism, artifact connections</p>
+        </div>
+    </div>
+
+    <!-- PERSONAL_WHITMORE -->
+    <div class="skill-group">
+        <div class="skill-header">👥 personal_whitmore <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[PERSONAL]</span></div>
+        <div class="skill-description">Alice Whitmore, her training, abilities, and connections</div>
+        <p style="color: #F5E6D3;">Knowledge about Alice Whitmore, her training, abilities, and connections</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Direct spiritual/psychic connection: complete knowledge of Alice's training, abilities, and spiritual legacy</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Medical or indirect knowledge: medical records, professional connections</p>
+        </div>
+    </div>
+
+    <!-- PERSONAL_SULLIVAN -->
+    <div class="skill-group">
+        <div class="skill-header">👥 personal_sullivan <span style="color: #DAA520; font-size: 0.7em; font-weight: normal;">[PERSONAL]</span></div>
+        <div class="skill-description">Eleanor Sullivan (adoptive name), family connections, recipes, and heritage</div>
+        <p style="color: #F5E6D3;">Knowledge about Eleanor Sullivan (adoptive name), family connections, recipes, and heritage</p>
+        <div class="access-level">
+            <h4>⭐ Expert</h4>
+            <p>Direct family connection: complete knowledge of Eleanor's heritage, family recipes, and connections</p>
+        </div>
+        <div class="access-level">
+            <h4>📖 Basic</h4>
+            <p>Indirect knowledge: professional connections, inheritance documents, relationship-based knowledge</p>
+        </div>
+    </div>
+
+
+    <div style="margin-top: 40px; padding: 20px; text-align: center; color: #8B7355;">
+        <a href="../index.html" style="color: #DAA520; text-decoration: none;">← Return to Investigation</a>
+    </div>
+</body>
+</html>

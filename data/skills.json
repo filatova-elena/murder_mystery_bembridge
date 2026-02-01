@@ -1,0 +1,220 @@
+{
+  "botanical": {
+    "name": "botanical",
+    "title": "Botanical",
+    "icon": "🌿",
+    "category": "KEY",
+    "description": "Chemistry, botany, toxicology, herbology",
+    "enables": [
+      "Plant identification",
+      "Herbal knowledge",
+      "Extraction methods",
+      "Chemical compounds",
+      "Poison knowledge"
+    ],
+    "expert": {
+      "description": "Complete botanical expertise: scientific classification, extraction methods, chemical analysis, toxicology"
+    },
+    "basic": {
+      "description": "Intuitive or practical knowledge: basic plant recognition, culinary herb knowledge, danger recognition"
+    }
+  },
+  "spiritual": {
+    "name": "spiritual",
+    "title": "Spiritual",
+    "icon": "🔮",
+    "category": "KEY",
+    "description": "Psychic abilities, intuitive sensing, emotional connections",
+    "enables": [
+      "Psychic abilities",
+      "Emotional sensing",
+      "Spiritual connections",
+      "Intuitive recognition"
+    ],
+    "expert": {
+      "description": "Complete spiritual abilities: full vision access, clear communication with spirits, detailed psychic insights"
+    },
+    "basic": {
+      "description": "Limited spiritual connection: fragmented visions, emotional impressions, intuitive sensing"
+    }
+  },
+  "rumors": {
+    "name": "rumors",
+    "title": "Rumors",
+    "icon": "🗝️",
+    "category": "KEY",
+    "description": "Access to locked rumor treasure chests",
+    "enables": [
+      "Physical access to treasure chests containing rumor cards",
+      "Rumors are distributed in locked chests around the venue"
+    ],
+    "expert": {
+      "description": "Receive keys to unlock rumor treasure chests. Can access all locked rumor sources independently."
+    },
+    "basic": {
+      "description": "Can read and trade rumor cards once obtained, but cannot unlock treasure chests. Must work with Expert characters to access locked rumors."
+    }
+  },
+  "medical": {
+    "name": "medical",
+    "title": "Medical",
+    "icon": "⚕️",
+    "category": "SECONDARY",
+    "description": "Medical, forensic, clinical",
+    "enables": [
+      "Clinical analysis",
+      "Pharmaceutical knowledge",
+      "Crime scene analysis",
+      "Injury patterns",
+      "Blood splatter",
+      "Cause of death determination"
+    ],
+    "expert": {
+      "description": "Complete medical and forensic expertise: detailed analysis, pattern recognition, professional medical knowledge"
+    },
+    "basic": {
+      "description": "Basic medical understanding or limited forensic knowledge"
+    }
+  },
+  "legal": {
+    "name": "legal",
+    "title": "Legal",
+    "icon": "⚖️",
+    "category": "SECONDARY",
+    "description": "Financial, legal, estate law, trust documents",
+    "enables": [
+      "Estate law",
+      "Trust documents",
+      "Financial records analysis",
+      "Legal interpretation",
+      "Inheritance law"
+    ],
+    "expert": {
+      "description": "Complete legal and financial expertise: detailed document analysis, legal interpretation, financial records"
+    },
+    "basic": {
+      "description": "Basic legal understanding or limited financial knowledge"
+    }
+  },
+  "history": {
+    "name": "history",
+    "title": "History",
+    "icon": "📜",
+    "category": "SECONDARY",
+    "description": "Art history, provenance, authentication, craftsmanship, historical research, investigation, cartography, journalism",
+    "enables": [
+      "Art history",
+      "Artifact evaluation",
+      "Document authentication",
+      "Handwriting recognition",
+      "Provenance research",
+      "Document research",
+      "Timeline reconstruction",
+      "Map reading",
+      "Measurement analysis",
+      "Source verification",
+      "Archival knowledge"
+    ],
+    "expert": {
+      "description": "Complete historical and investigative expertise: professional research, authentication, detailed analysis"
+    },
+    "basic": {
+      "description": "Basic historical knowledge, research skills, or specialized areas (e.g., journalism, cartography)"
+    }
+  },
+  "personal_montrose": {
+    "name": "personal_montrose",
+    "title": "Montrose Family",
+    "icon": "👥",
+    "category": "PERSONAL",
+    "description": "Montrose family, Cordelia Montrose, Montrose estate, and family history",
+    "enables": [
+      "Knowledge about the Montrose family",
+      "Cordelia Montrose",
+      "Montrose estate",
+      "Family history"
+    ],
+    "expert": {
+      "description": "Direct family connection: complete knowledge of Montrose family history, estate, and family members"
+    },
+    "basic": {
+      "description": "Indirect knowledge: professional connections, recipes, or relationship-based knowledge"
+    }
+  },
+  "personal_crane": {
+    "name": "personal_crane",
+    "title": "Crane Family",
+    "icon": "👥",
+    "category": "PERSONAL",
+    "description": "Crane family, Sebastian Crane, Thaddeus Crane, and family history",
+    "enables": [
+      "Knowledge about the Crane family",
+      "Sebastian Crane",
+      "Thaddeus Crane",
+      "Family history"
+    ],
+    "expert": {
+      "description": "Direct family connection: complete knowledge of Crane family history, medical legacy, and family members"
+    },
+    "basic": {
+      "description": "Professional or indirect knowledge: medical records, professional connections"
+    }
+  },
+  "personal_romano": {
+    "name": "personal_romano",
+    "title": "Romano Family",
+    "icon": "👥",
+    "category": "PERSONAL",
+    "description": "Romano family, Frankie Romano, smuggling operations, and business connections",
+    "enables": [
+      "Knowledge about the Romano family",
+      "Frankie Romano",
+      "Smuggling operations",
+      "Business connections"
+    ],
+    "expert": {
+      "description": "Direct family connection: complete knowledge of Romano family, business operations, and smuggling networks"
+    },
+    "basic": {
+      "description": "Research-based or indirect knowledge: historical research, investigative journalism, artifact connections"
+    }
+  },
+  "personal_whitmore": {
+    "name": "personal_whitmore",
+    "title": "Whitmore Family",
+    "icon": "👥",
+    "category": "PERSONAL",
+    "description": "Alice Whitmore, her training, abilities, and connections",
+    "enables": [
+      "Knowledge about Alice Whitmore",
+      "Her training",
+      "Abilities",
+      "Connections"
+    ],
+    "expert": {
+      "description": "Direct spiritual/psychic connection: complete knowledge of Alice's training, abilities, and spiritual legacy"
+    },
+    "basic": {
+      "description": "Medical or indirect knowledge: medical records, professional connections"
+    }
+  },
+  "personal_sullivan": {
+    "name": "personal_sullivan",
+    "title": "Sullivan Family",
+    "icon": "👥",
+    "category": "PERSONAL",
+    "description": "Eleanor Sullivan (adoptive name), family connections, recipes, and heritage",
+    "enables": [
+      "Knowledge about Eleanor Sullivan (adoptive name)",
+      "Family connections",
+      "Recipes",
+      "Heritage"
+    ],
+    "expert": {
+      "description": "Direct family connection: complete knowledge of Eleanor's heritage, family recipes, and connections"
+    },
+    "basic": {
+      "description": "Indirect knowledge: professional connections, inheritance documents, relationship-based knowledge"
+    }
+  }
+}

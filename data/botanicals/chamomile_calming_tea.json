@@ -1,0 +1,17 @@
+{
+  "id": "chamomile_calming_tea",
+  "title": "White and Yellow Flowered Plant",
+  "name": "Chamomile",
+  "scientific_name": "Matricaria chamomilla",
+  "description": "Cheerful white and yellow flowers. Dried bundles hanging nearby. Common garden plant.",
+  "is_primary": false,
+  "type": "Garden Herb - For Fun",
+  "reveals": "Soothing garden plant found in the Montrose mansion kitchen. Commonly used for teas.",
+  "character_interpretations": {
+    "professor": "Chamomile. Common and harmless. A gentle herb. Known for soothing properties.",
+    "baker": "Chamomile. Used for tea. Kitchen herb. Mild flavor.",
+    "heiress": "White flowers. Pretty dried.",
+    "explorer": "Chamomile. Old bundles, dried properly. Common sight in gardens and kitchens.",
+    "fiduciary": "No significance."
+  }
+}

@@ -1,0 +1,12 @@
+/* Book chapter styles */
+body { padding: 10px; }
+.container { padding: 20px; max-width: 900px; }
+h1 { font-size: 1.8em; margin-bottom: 10px; padding-bottom: 10px; }
+.diary-entry { padding: 15px; margin: 0; line-height: 1.6; border: none; }
+.diary-header { margin-bottom: 12px; font-size: 0.95em; color: var(--accent-gold); }
+.diary-text { margin-bottom: 10px; font-size: 0.95em; }
+.diary-text p { margin: 20px 0; line-height: 2; }
+.page-nav { margin-top: 15px; gap: 8px; display: flex; justify-content: center; flex-wrap: wrap; }
+.nav-button { padding: 8px 16px; font-size: 0.9em; margin: 5px 2px; }
+.page-num { margin: 10px 0; font-size: 0.9em; color: var(--accent-gold); text-align: center; }
+.nav-footer { margin-top: 15px; padding-top: 15px; }

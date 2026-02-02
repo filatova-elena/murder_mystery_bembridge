@@ -8,58 +8,46 @@
 </head>
 <body>
   <div class="container">
-    <h1>The Psychic Medium</h1>
+    <h1 id="character-title">Loading...</h1>
     
     <div class="confirmation">
       <p>You have been assigned the role of:</p>
-      <h2 style="margin: 20px 0;">Margo Laveau</h2>
+      <h2 id="character-name">Loading...</h2>
     </div>
 
     <div class="message-box">
       <h2>Personality</h2>
-      <p>Spiritualist descended from a legendary psychic. A restless spirit has waited 100 years for you.</p>
+      <p id="personality">Loading...</p>
     </div>
 
     <div class="message-box">
       <h2>Skills</h2>
-      <p><strong>⭐ Expert:</strong> Spiritual</p>
-      <p><strong>📖 Basic:</strong> History</p>
+      <div id="skills">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Your Background</h2>
-      <p>Your name is <strong>Margo Laveau,</strong> and you carry one of the most famous names in spiritualism. Your great-great-grandmother was <strong>Célestine Laveau,</strong> world-renowned French psychic who came to California during the spiritualism boom of the 1920s.</p>
-      <p>In 1925, a young woman named <strong>Alice Whitmore</strong> came to Célestine seeking help. Alice had psychic abilities herself—visions, premonitions, knowledge of things she shouldn't know. She was frightened, misunderstood by doctors who called her unstable. Célestine recognized Alice's genuine gift and tried to mentor her.</p>
-      <p>Then Alice died. <strong>October 7, 1925.</strong> Officially ruled an accident.</p>
-      <p>But Alice's spirit reached out to Célestine immediately. She was trapped, restless, murdered. She needed help. Célestine tried to give her peace, tried to help her move on, but Alice's spirit remained bound to the place she died—the Montrose mansion.</p>
-      <p>For 100 years, Alice has been waiting. Calling out to the Laveau family. Generation after generation heard her plea but couldn't break through, couldn't help her find peace.</p>
-      <p>You grew up hearing about "the restless spirit in Long Beach." The unfinished business. The young woman who died trying to save her friend. Your family's failure to help her.</p>
-      <p>When the Heiress contacted you about the haunted mansion, you knew immediately: this is Alice. After a century, the time is finally right. You're here to finish what Célestine started.</p>
+      <div id="background">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Your Objectives</h2>
-      <ol style="text-align: left; display: inline-block;">
-        <li>Discover the dark truth behind the three spirits bound to this mansion—The Lonely Ghost, The Heartbroken Ghost, and The Cursed Alchemist Ghost.</li>
-        <li><strong>Private (optional):</strong> Uncover the connection of your illustrious ancestor Célestine Laveau to the Whitmore family.</li>
-      </ol>
+      <ol id="objectives">Loading...</ol>
     </div>
 
     <div class="message-box">
       <h2>Your Strategy</h2>
-      <p>Your Expert Spiritual skill gives you full vision access and clear communication with spirits. Your Basic History skill helps with research. The spirits' messages need verification—others' knowledge can confirm or clarify what you're being told.</p>
+      <p id="strategy">Loading...</p>
     </div>
 
     <div class="message-box">
       <h2>Key Relationships</h2>
-      <p><strong>The Heiress:</strong> She hired you to help with the ghosts haunting her mansion. Together you can help the spirits find peace and solve the mystery that binds them to this place.</p>
-      <p><strong>The Baker:</strong> You sense powerful psychic sensitivity in them. They have the gift, even if they don't understand it. Help them develop their abilities—together you can interpret visions more clearly.</p>
-      <p><strong>The Clockmaker:</strong> They believe in mystical timing and cosmic significance. Their understanding of timing patterns complements your spiritual insights. Combine your knowledge to understand the significance of events.</p>
-      <p><strong>The Influencer:</strong> They approach everything skeptically, which can be valuable for verification. Share your spiritual insights—their skepticism helps separate genuine phenomena from speculation.</p>
+      <div id="relationships">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Starting Items</h2>
+      <ul id="starting-items">Loading...</ul>
     </div>
 
     <div class="nav-footer">
@@ -69,7 +57,101 @@
 
   <script src="../assets/script.js"></script>
   <script>
-    setCharacter('psychic');
+    const characterName = 'psychic';
+    setCharacter(characterName);
+
+    // Load character data and skills
+    Promise.all([
+      fetch(`../data/character/${characterName}.json`).then(r => r.json()),
+      fetch(`../data/skills.json`).then(r => r.json())
+    ]).then(([character, skills]) => {
+      // Set title and name
+      document.getElementById('character-title').textContent = character.title;
+      document.getElementById('character-name').textContent = character.title;
+
+      // Set personality
+      document.getElementById('personality').textContent = character.personality;
+
+      // Set skills
+      const skillsDiv = document.getElementById('skills');
+      skillsDiv.innerHTML = '';
+      
+      // Expert skills
+      if (character.skills.expert && character.skills.expert.length > 0) {
+        const expertTitles = character.skills.expert.map(skill => skills[skill]?.title || skill).join(', ');
+        const expertP = document.createElement('p');
+        expertP.innerHTML = `<strong>⭐ Expert:</strong> ${expertTitles}`;
+        skillsDiv.appendChild(expertP);
+      }
+
+      // Basic skills
+      if (character.skills.basic && character.skills.basic.length > 0) {
+        const basicTitles = character.skills.basic.map(skill => skills[skill]?.title || skill).join(', ');
+        const basicP = document.createElement('p');
+        basicP.innerHTML = `<strong>📖 Basic knowledge:</strong> ${basicTitles}`;
+        skillsDiv.appendChild(basicP);
+      }
+
+      // Personal connections
+      if (character.skills.personal && character.skills.personal.length > 0) {
+        const personalTitles = character.skills.personal.map(skill => skills[skill]?.title || skill).join(', ');
+        const personalP = document.createElement('p');
+        personalP.innerHTML = `<strong>👥 Personal Connection:</strong> ${personalTitles}`;
+        skillsDiv.appendChild(personalP);
+      }
+
+      // Set background (preserve original formatting)
+      const backgroundDiv = document.getElementById('background');
+      backgroundDiv.innerHTML = '';
+      const paragraphs = character.background.split(/(?<=\.)\s+(?=[A-Z])/).filter(p => p.trim());
+      paragraphs.forEach(para => {
+        const p = document.createElement('p');
+        p.textContent = para.trim();
+        backgroundDiv.appendChild(p);
+      });
+
+      // Set objectives
+      const objectivesOl = document.getElementById('objectives');
+      objectivesOl.innerHTML = '';
+      const mainLi = document.createElement('li');
+      mainLi.textContent = character.objectives.main;
+      objectivesOl.appendChild(mainLi);
+      const privateLi = document.createElement('li');
+      privateLi.innerHTML = `<strong>Private (optional):</strong> ${character.objectives.private}`;
+      objectivesOl.appendChild(privateLi);
+
+      // Set strategy
+      document.getElementById('strategy').textContent = character.strategy;
+
+      // Set relationships
+      const relationshipsDiv = document.getElementById('relationships');
+      relationshipsDiv.innerHTML = '';
+      Object.entries(character.relationships).forEach(([key, value]) => {
+        const p = document.createElement('p');
+        const title = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+        p.innerHTML = `<strong>The ${title}:</strong> ${value}`;
+        relationshipsDiv.appendChild(p);
+      });
+
+      // Set starting items
+      const startingItemsUl = document.getElementById('starting-items');
+      startingItemsUl.innerHTML = '';
+      if (character.starting_items && character.starting_items.length > 0) {
+        character.starting_items.forEach(item => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.link;
+          a.textContent = item.name;
+          li.appendChild(a);
+          startingItemsUl.appendChild(li);
+        });
+      } else {
+        startingItemsUl.innerHTML = '<li>None</li>';
+      }
+    }).catch(error => {
+      console.error('Error loading character data:', error);
+      document.body.innerHTML = '<div class="container"><h1>Error loading character data</h1></div>';
+    });
   </script>
 </body>
 </html>

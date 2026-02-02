@@ -1,0 +1,12 @@
+{
+  "id": "ornate_vase_hidden_compartment",
+  "is_primary": false,
+  "name": "Ornate Porcelain Vase - Ming Dynasty Style",
+  "type": "Artifact - Secondary / Hidden Compartment",
+  "location": "Mansion display shelf, decorative room",
+  "description": "A beautiful blue and white porcelain vase with intricate dragon patterns and an unusually weighted base.",
+  "character_interpretations": {
+    "art_collector": "The craftsmanship is excellent, but the style appears to be a skilled 1940s reproduction rather than authentic Ming Dynasty. However, the weight distribution suggests something was deliberately hidden. The base has a hidden compartment—invisible to casual inspection. Something valuable was stored here and removed at some point.",
+    "explorer": "The base is engineered for concealment. Press along the seams at the bottom—there's likely a hidden compartment. If it's empty now, whatever was stored here was removed deliberately. Check the mansion's records around 1925-1926 for any mentions of vase restoration or appraisals—that might indicate when it was accessed. This vase held something valuable enough to commission special engineering."
+  }
+}

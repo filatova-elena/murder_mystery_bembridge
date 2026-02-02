@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ chapter.title }} - The Lost Souls of Kennebec Avenue</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/book/styles.css">
+  <script defer src="/assets/script.js"></script>
+  <script defer src="/book/scripts.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ chapter.title }}</h1>
+    
+    <div class="diary-entry">
+      <div class="diary-header" id="entryDate"></div>
+      <div class="diary-text" id="entryContent"></div>
+    </div>
+
+    <div class="page-nav">
+      <button class="button nav-button" id="prevBtn" onclick="previousEntry()">← Previous Entry</button>
+      <button class="button nav-button" id="nextBtn" onclick="nextEntry()">Next Entry →</button>
+    </div>
+    <div class="page-num" id="pageNum"></div>
+
+    <div class="nav-footer">
+      <a href="/book/index.html" class="button nav-button">← Book Index</a>
+      <a href="/" class="button nav-button">Return to Investigation</a>
+    </div>
+  </div>
+
+  <script>
+    // Data from template (must be inline)
+    const entries = {{ chapter.entries | dump | safe }};
+    const prevChapter = {{ chapter.prevSlug | dump | safe }};
+    const nextChapter = {{ chapter.nextSlug | dump | safe }};
+  </script>
+</body>
+</html>

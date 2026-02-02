@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ journal.title }} - The Lost Souls of Kennebec Avenue</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/clue/styles.css">
+  <script defer src="/assets/script.js"></script>
+  <script defer src="/clue/scripts.js"></script>
+</head>
+<body>
+  <div class="container journal-container">
+    <h1>{{ journal.title }}</h1>
+    
+    {% if journal.type %}
+      <p style="font-style: italic; margin-bottom: 20px; color: var(--accent-gold);">{{ journal.type }}</p>
+    {% endif %}
+    
+    <div class="journal-meta">
+      {% if journal.written_by %}<p><strong>Written by:</strong> {{ journal.written_by }}</p>{% endif %}
+      {% if journal.format %}<p><strong>Format:</strong> {{ journal.format }}</p>{% endif %}
+      {% if journal.location %}<p><strong>Location:</strong> {{ journal.location }}</p>{% endif %}
+      {% if journal.date_range %}<p><strong>Period:</strong> {{ journal.date_range }}</p>{% endif %}
+    </div>
+    
+    {% if journal.entries %}
+      <div class="journal-entries">
+        {% for entry in journal.entries %}
+          <div class="journal-entry" {% if entry.is_spoiler %}data-spoiler="true"{% endif %}>
+            {% if entry.is_spoiler %}
+              <div class="spoiler-warning">⚠️ This entry may contain spoilers</div>
+            {% endif %}
+            
+            <div class="journal-entry-header">
+              <div>
+                {% if entry.date %}
+                  <span class="journal-entry-date">{{ entry.date }}</span>
+                {% endif %}
+                {% if entry.title %}
+                  <span class="journal-entry-title"> — {{ entry.title }}</span>
+                {% endif %}
+                {% if entry.name %}
+                  <span class="journal-entry-title"> — {{ entry.name }}</span>
+                {% endif %}
+              </div>
+              {% if entry.official_cause %}
+                <span class="journal-entry-meta">Official: {{ entry.official_cause }}</span>
+              {% endif %}
+            </div>
+            
+            <div class="journal-entry-content">{{ entry.content or entry.entry | safe }}</div>
+            
+            {# Per-entry character interpretations #}
+            {% if entry.character_interpretations %}
+              <div id="entryObservation-{{ loop.index }}" class="character-observation" style="display: none;">
+                <h4>You observe...</h4>
+                <p id="entryAnalysis-{{ loop.index }}"></p>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    {# Journal-level character interpretations #}
+    {% if journal.character_interpretations %}
+      <div id="characterObservations" class="character-observation" style="display: none; margin-top: 30px;">
+        <h4>Your overall observations...</h4>
+        <p id="characterAnalysis"></p>
+      </div>
+    {% endif %}
+    
+    <div class="nav-footer">
+      <a href="/clue/index.html" class="button nav-button">← All Clues</a>
+      <a href="/" class="button nav-button">Return to Investigation</a>
+    </div>
+  </div>
+  
+  <script>
+    // Data from template
+    const entries = {{ journal.entries | dump | safe }};
+    const journalInterpretations = {{ journal.character_interpretations | dump | safe }};
+    document.addEventListener('DOMContentLoaded', () => showJournalObservations(entries, journalInterpretations));
+  </script>
+</body>
+</html>

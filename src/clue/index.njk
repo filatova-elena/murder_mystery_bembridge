@@ -1,0 +1,69 @@
+---
+layout: _base.njk
+title: All Clues
+permalink: /clue/index.html
+---
+
+<h1>🔍 All Clues</h1>
+
+<h2 style="margin-top: 40px;">📜 Documents</h2>
+<div style="display: grid; gap: 10px; max-width: 700px; margin: 20px auto;">
+  {% for clue in clues %}
+    {% if clue.clueType == 'document' %}
+    <a href="/clue/documents/{{ clue.slug }}.html" 
+       style="display: block; padding: 12px 16px; background: rgba(218, 165, 32, 0.1); 
+              border: 1px solid var(--accent-gold); border-radius: 6px; 
+              text-decoration: none; color: inherit;">
+      <strong>{{ clue.title }}</strong>
+      <span style="font-size: 0.85em; opacity: 0.7; margin-left: 10px;">{{ clue.type }}</span>
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<h2 style="margin-top: 40px;">🏺 Artifacts</h2>
+<div style="display: grid; gap: 10px; max-width: 700px; margin: 20px auto;">
+  {% for clue in clues %}
+    {% if clue.clueType == 'artifact' %}
+    <a href="/clue/artifacts/{{ clue.slug }}.html" 
+       style="display: block; padding: 12px 16px; background: rgba(218, 165, 32, 0.1); 
+              border: 1px solid var(--accent-gold); border-radius: 6px; 
+              text-decoration: none; color: inherit;">
+      <strong>{{ clue.title }}</strong>
+      <span style="font-size: 0.85em; opacity: 0.7; margin-left: 10px;">{{ clue.type }}</span>
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<h2 style="margin-top: 40px;">🌿 Botanicals</h2>
+<div style="display: grid; gap: 10px; max-width: 700px; margin: 20px auto;">
+  {% for clue in clues %}
+    {% if clue.clueType == 'botanical' %}
+    <a href="/clue/botanicals/{{ clue.slug }}.html" 
+       style="display: block; padding: 12px 16px; background: rgba(218, 165, 32, 0.1); 
+              border: 1px solid var(--accent-gold); border-radius: 6px; 
+              text-decoration: none; color: inherit;">
+      <strong>{{ clue.title }}</strong>
+      <span style="font-size: 0.85em; opacity: 0.7; margin-left: 10px;">{{ clue.name }}</span>
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<h2 style="margin-top: 40px;">📓 Journals & Letters</h2>
+<div style="display: grid; gap: 10px; max-width: 700px; margin: 20px auto;">
+  {% for journal in journals %}
+    <a href="/clue/journals/{{ journal.slug }}.html" 
+       style="display: block; padding: 12px 16px; background: rgba(218, 165, 32, 0.1); 
+              border: 1px solid var(--accent-gold); border-radius: 6px; 
+              text-decoration: none; color: inherit;">
+      <strong>{{ journal.title }}</strong>
+      {% if journal.entries %}<span style="font-size: 0.85em; opacity: 0.7; margin-left: 10px;">{{ journal.entries.length }} entries</span>{% endif %}
+    </a>
+  {% endfor %}
+</div>
+
+<div class="nav-footer" style="margin-top: 40px;">
+  <a href="/" class="button nav-button">← Return to Investigation</a>
+</div>

@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+"""Update remaining character HTML files to use JSON data"""
+
+import os
+
+# Character configs: (filename, title, character_name)
+characters = [
+    ('clockmaker', 'Clockmaker', 'clockmaker'),
+    ('explorer', 'Explorer', 'explorer'),
+    ('artcollector', 'Art Collector', 'artcollector'),
+    ('professor', 'Professor', 'professor'),
+    ('psychic', 'Psychic Medium', 'psychic'),
+    ('influencer', 'Influencer', 'influencer'),
+    ('heiress', 'Heiress', 'heiress'),
+]
+
+template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} - The Lost Souls of Kennebec Avenue</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="character-title">Loading...</h1>
+    
+    <div class="confirmation">
+      <p>You have been assigned the role of:</p>
+      <h2 id="character-name">Loading...</h2>
+    </div>
+
+    <div class="message-box">
+      <h2>Personality</h2>
+      <p id="personality">Loading...</p>
+    </div>
+
+    <div class="message-box">
+      <h2>Skills</h2>
+      <div id="skills">Loading...</div>
+    </div>
+
+    <div class="message-box">
+      <h2>Your Background</h2>
+      <div id="background">Loading...</div>
+    </div>
+
+    <div class="message-box">
+      <h2>Your Objectives</h2>
+      <ol id="objectives">Loading...</ol>
+    </div>
+
+    <div class="message-box">
+      <h2>Your Strategy</h2>
+      <p id="strategy">Loading...</p>
+    </div>
+
+    <div class="message-box">
+      <h2>Key Relationships</h2>
+      <div id="relationships">Loading...</div>
+    </div>
+
+    <div class="message-box">
+      <h2>Starting Items</h2>
+      <ul id="starting-items">Loading...</ul>
+    </div>
+
+    <div class="nav-footer">
+      <a href="../index.html" class="button nav-button">Begin Investigation</a>
+    </div>
+  </div>
+
+  <script src="../assets/script.js"></script>
+  <script>
+    const characterName = '{char_name}';
+    setCharacter(characterName);
+
+    // Load character data and skills
+    Promise.all([
+      fetch(`../data/character/${{characterName}}.json`).then(r => r.json()),
+      fetch(`../data/skills.json`).then(r => r.json())
+    ]).then(([character, skills]) => {{
+      // Set title and name
+      document.getElementById('character-title').textContent = character.title;
+      document.getElementById('character-name').textContent = character.title;
+
+      // Set personality
+      document.getElementById('personality').textContent = character.personality;
+
+      // Set skills
+      const skillsDiv = document.getElementById('skills');
+      skillsDiv.innerHTML = '';
+      
+      // Expert skills
+      if (character.skills.expert && character.skills.expert.length > 0) {{
+        const expertTitles = character.skills.expert.map(skill => skills[skill]?.title || skill).join(', ');
+        const expertP = document.createElement('p');
+        expertP.innerHTML = `<strong>⭐ Expert:</strong> ${{expertTitles}}`;
+        skillsDiv.appendChild(expertP);
+      }}
+
+      // Basic skills
+      if (character.skills.basic && character.skills.basic.length > 0) {{
+        const basicTitles = character.skills.basic.map(skill => skills[skill]?.title || skill).join(', ');
+        const basicP = document.createElement('p');
+        basicP.innerHTML = `<strong>📖 Basic knowledge:</strong> ${{basicTitles}}`;
+        skillsDiv.appendChild(basicP);
+      }}
+
+      // Personal connections
+      if (character.skills.personal && character.skills.personal.length > 0) {{
+        const personalTitles = character.skills.personal.map(skill => skills[skill]?.title || skill).join(', ');
+        const personalP = document.createElement('p');
+        personalP.innerHTML = `<strong>👥 Personal Connection:</strong> ${{personalTitles}}`;
+        skillsDiv.appendChild(personalP);
+      }}
+
+      // Set background (preserve original formatting)
+      const backgroundDiv = document.getElementById('background');
+      backgroundDiv.innerHTML = '';
+      const paragraphs = character.background.split(/(?<=\\.)\\s+(?=[A-Z])/).filter(p => p.trim());
+      paragraphs.forEach(para => {{
+        const p = document.createElement('p');
+        p.textContent = para.trim();
+        backgroundDiv.appendChild(p);
+      }});
+
+      // Set objectives
+      const objectivesOl = document.getElementById('objectives');
+      objectivesOl.innerHTML = '';
+      const mainLi = document.createElement('li');
+      mainLi.textContent = character.objectives.main;
+      objectivesOl.appendChild(mainLi);
+      const privateLi = document.createElement('li');
+      privateLi.innerHTML = `<strong>Private (optional):</strong> ${{character.objectives.private}}`;
+      objectivesOl.appendChild(privateLi);
+
+      // Set strategy
+      document.getElementById('strategy').textContent = character.strategy;
+
+      // Set relationships
+      const relationshipsDiv = document.getElementById('relationships');
+      relationshipsDiv.innerHTML = '';
+      Object.entries(character.relationships).forEach(([key, value]) => {{
+        const p = document.createElement('p');
+        const title = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+        p.innerHTML = `<strong>The ${{title}}:</strong> ${{value}}`;
+        relationshipsDiv.appendChild(p);
+      }});
+
+      // Set starting items
+      const startingItemsUl = document.getElementById('starting-items');
+      startingItemsUl.innerHTML = '';
+      if (character.starting_items && character.starting_items.length > 0) {{
+        character.starting_items.forEach(item => {{
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.link;
+          a.textContent = item.name;
+          li.appendChild(a);
+          startingItemsUl.appendChild(li);
+        }});
+      }} else {{
+        startingItemsUl.innerHTML = '<li>None</li>';
+      }}
+    }}).catch(error => {{
+      console.error('Error loading character data:', error);
+      document.body.innerHTML = '<div class="container"><h1>Error loading character data</h1></div>';
+    }});
+  </script>
+</body>
+</html>'''
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(script_dir)
+character_dir = os.path.join(project_root, 'character')
+
+for filename, title, char_name in characters:
+    filepath = os.path.join(character_dir, f'{filename}.html')
+    content = template.format(title=title, char_name=char_name)
+    with open(filepath, 'w') as f:
+        f.write(content)
+    print(f'Updated {filename}.html')

@@ -8,56 +8,46 @@
 </head>
 <body>
   <div class="container">
-    <h1>The Heiress</h1>
+    <h1 id="character-title">Loading...</h1>
     
     <div class="confirmation">
       <p>You have been assigned the role of:</p>
-      <h2 style="margin: 20px 0;">The Heiress</h2>
+      <h2 id="character-name">Loading...</h2>
     </div>
 
     <div class="message-box">
       <h2>Personality</h2>
-      <p>Wealthy, dramatic socialite who lives in the haunted mansion. Terrified but too proud to admit you made a mistake.</p>
+      <p id="personality">Loading...</p>
     </div>
 
     <div class="message-box">
       <h2>Skills</h2>
-      <p><strong>⭐ Expert:</strong> Rumors, Montrose Family</p>
+      <div id="skills">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Your Background</h2>
-      <p>You're a distant relative of the Montrose family—the mansion came to you through a complicated inheritance chain. Your family isn't particularly close; you barely knew about this Long Beach property until the Fiduciary tracked you down and informed you that you'd inherited it.</p>
-      <p>At first, you were thrilled. A mansion! Your own place! Independence from your annoying family! You moved in immediately, thinking it would be a glamorous fresh start.</p>
-      <p>Then you realized: <strong>it's haunted. Very haunted.</strong></p>
-      <p>Doors open by themselves. You hear footsteps. Cold spots in certain rooms. Sometimes you see figures in 1920s clothing. One room in particular—you refuse to go in there anymore. Something terrible happened in that room.</p>
-      <p>You're scared, but also too proud to admit you made a mistake and move back. So you hired <strong>Margo Laveau, the psychic medium,</strong> to "deal with it."</p>
-      <p>Now all these people have shown up to investigate. Part of you is relieved (safety in numbers), part of you is annoyed (this is YOUR house), and part of you is terrified of what they might discover.</p>
-      <p><em>What happened in your mansion 100 years ago? And why won't the ghosts leave you alone?</em></p>
+      <div id="background">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Your Objectives</h2>
-      <ol style="text-align: left; display: inline-block;">
-        <li>Discover the dark truth behind the three spirits bound to this mansion—The Lonely Ghost, The Heartbroken Ghost, and The Cursed Alchemist Ghost.</li>
-        <li><strong>Private (optional):</strong> Uncover the name Cordelia wanted to protect above all else.</li>
-      </ol>
+      <ol id="objectives">Loading...</ol>
     </div>
 
     <div class="message-box">
       <h2>Your Strategy</h2>
-      <p>Your Expert Rumors skill gives you keys to unlock rumor treasure chests. Your knowledge of the Montrose family provides complete understanding of their history. You have unique access to both rumors and the mansion—others can help interpret what you discover.</p>
+      <p id="strategy">Loading...</p>
     </div>
 
     <div class="message-box">
       <h2>Key Relationships</h2>
-      <p><strong>The Psychic Medium:</strong> You hired them to help with the ghosts. They understand spiritual matters and can communicate with the spirits. Together you can help the ghosts find peace and solve the mystery.</p>
-      <p><strong>The Fiduciary:</strong> They found you and gave you this mansion. Their estate records and legal documents could help explain the property's history. Share what you've discovered in the mansion—it might match their records.</p>
-      <p><strong>The Baker:</strong> Something about them feels important or familiar. They might have a connection to the Montrose family. Explore this together—there could be shared history you both need to understand.</p>
+      <div id="relationships">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Starting Items</h2>
+      <ul id="starting-items">Loading...</ul>
     </div>
 
     <div class="nav-footer">
@@ -67,7 +57,101 @@
 
   <script src="../assets/script.js"></script>
   <script>
-    setCharacter('heiress');
+    const characterName = 'heiress';
+    setCharacter(characterName);
+
+    // Load character data and skills
+    Promise.all([
+      fetch(`../data/character/${characterName}.json`).then(r => r.json()),
+      fetch(`../data/skills.json`).then(r => r.json())
+    ]).then(([character, skills]) => {
+      // Set title and name
+      document.getElementById('character-title').textContent = character.title;
+      document.getElementById('character-name').textContent = character.title;
+
+      // Set personality
+      document.getElementById('personality').textContent = character.personality;
+
+      // Set skills
+      const skillsDiv = document.getElementById('skills');
+      skillsDiv.innerHTML = '';
+      
+      // Expert skills
+      if (character.skills.expert && character.skills.expert.length > 0) {
+        const expertTitles = character.skills.expert.map(skill => skills[skill]?.title || skill).join(', ');
+        const expertP = document.createElement('p');
+        expertP.innerHTML = `<strong>⭐ Expert:</strong> ${expertTitles}`;
+        skillsDiv.appendChild(expertP);
+      }
+
+      // Basic skills
+      if (character.skills.basic && character.skills.basic.length > 0) {
+        const basicTitles = character.skills.basic.map(skill => skills[skill]?.title || skill).join(', ');
+        const basicP = document.createElement('p');
+        basicP.innerHTML = `<strong>📖 Basic knowledge:</strong> ${basicTitles}`;
+        skillsDiv.appendChild(basicP);
+      }
+
+      // Personal connections
+      if (character.skills.personal && character.skills.personal.length > 0) {
+        const personalTitles = character.skills.personal.map(skill => skills[skill]?.title || skill).join(', ');
+        const personalP = document.createElement('p');
+        personalP.innerHTML = `<strong>👥 Personal Connection:</strong> ${personalTitles}`;
+        skillsDiv.appendChild(personalP);
+      }
+
+      // Set background (preserve original formatting)
+      const backgroundDiv = document.getElementById('background');
+      backgroundDiv.innerHTML = '';
+      const paragraphs = character.background.split(/(?<=\.)\s+(?=[A-Z])/).filter(p => p.trim());
+      paragraphs.forEach(para => {
+        const p = document.createElement('p');
+        p.textContent = para.trim();
+        backgroundDiv.appendChild(p);
+      });
+
+      // Set objectives
+      const objectivesOl = document.getElementById('objectives');
+      objectivesOl.innerHTML = '';
+      const mainLi = document.createElement('li');
+      mainLi.textContent = character.objectives.main;
+      objectivesOl.appendChild(mainLi);
+      const privateLi = document.createElement('li');
+      privateLi.innerHTML = `<strong>Private (optional):</strong> ${character.objectives.private}`;
+      objectivesOl.appendChild(privateLi);
+
+      // Set strategy
+      document.getElementById('strategy').textContent = character.strategy;
+
+      // Set relationships
+      const relationshipsDiv = document.getElementById('relationships');
+      relationshipsDiv.innerHTML = '';
+      Object.entries(character.relationships).forEach(([key, value]) => {
+        const p = document.createElement('p');
+        const title = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+        p.innerHTML = `<strong>The ${title}:</strong> ${value}`;
+        relationshipsDiv.appendChild(p);
+      });
+
+      // Set starting items
+      const startingItemsUl = document.getElementById('starting-items');
+      startingItemsUl.innerHTML = '';
+      if (character.starting_items && character.starting_items.length > 0) {
+        character.starting_items.forEach(item => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.link;
+          a.textContent = item.name;
+          li.appendChild(a);
+          startingItemsUl.appendChild(li);
+        });
+      } else {
+        startingItemsUl.innerHTML = '<li>None</li>';
+      }
+    }).catch(error => {
+      console.error('Error loading character data:', error);
+      document.body.innerHTML = '<div class="container"><h1>Error loading character data</h1></div>';
+    });
   </script>
 </body>
 </html>

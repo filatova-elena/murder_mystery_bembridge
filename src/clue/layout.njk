@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ clue.title }} - The Lost Souls of Kennebec Avenue</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/clue/styles.css">
+  <script defer src="/assets/script.js"></script>
+  <script defer src="/clue/scripts.js"></script>
+</head>
+<body>
+  <div class="container clue-container">
+    <h1>{{ clue.title }}</h1>
+    
+    {% if clue.type %}
+      <p style="font-style: italic; margin-bottom: 20px; color: var(--accent-gold);">{{ clue.type }}</p>
+    {% endif %}
+    
+    {# Botanical-specific: scientific name #}
+    {% if clue.scientific_name %}
+      <p class="scientific-name">{{ clue.scientific_name }}</p>
+    {% endif %}
+    
+    {# Common metadata section #}
+    <div class="clue-meta">
+      {% if clue.date %}<p><strong>Date:</strong> {{ clue.date }}</p>{% endif %}
+      {% if clue.location %}<p><strong>Location:</strong> {{ clue.location }}</p>{% endif %}
+      {% if clue.examiner %}<p><strong>Examiner:</strong> {{ clue.examiner }}</p>{% endif %}
+      {% if clue.signedBy %}<p><strong>Signed by:</strong> {{ clue.signedBy }}</p>{% endif %}
+      {% if clue.examinedBy %}<p><strong>Examined by:</strong> {{ clue.examinedBy }}</p>{% endif %}
+      {% if clue.written_by %}<p><strong>Written by:</strong> {{ clue.written_by }}</p>{% endif %}
+      {% if clue.format %}<p><strong>Format:</strong> {{ clue.format }}</p>{% endif %}
+      {% if clue.subject %}<p><strong>Subject:</strong> {{ clue.subject }}</p>{% endif %}
+      {% if clue.condition %}<p><strong>Condition:</strong> {{ clue.condition }}</p>{% endif %}
+      {# Botanical-specific fields #}
+      {% if clue.purpose %}<p><strong>Purpose:</strong> {{ clue.purpose }}</p>{% endif %}
+      {% if clue.dosage %}<p><strong>Dosage:</strong> {{ clue.dosage }}</p>{% endif %}
+      {% if clue.symptoms %}<p><strong>Symptoms:</strong> {{ clue.symptoms }}</p>{% endif %}
+      {% if clue.toxicity %}<p><strong>Toxicity:</strong> {{ clue.toxicity }}</p>{% endif %}
+    </div>
+    
+    {# Character observations #}
+    <div id="characterObservations" class="message-box character-observation" style="display: none;">
+      <h2>You observe...</h2>
+      <div id="characterAnalysis"></div>
+    </div>
+    
+    {# Description (for artifacts/botanicals) #}
+    {% if clue.description %}
+      <div class="clue-content {% if clue.clueType == 'document' %}document{% endif %}">
+        <p>{{ clue.description }}</p>
+      </div>
+    {% endif %}
+    
+    {# Main content (for documents) #}
+    {% if clue.content %}
+      <div class="clue-content {% if clue.clueType == 'document' %}document{% endif %}">{{ clue.content | safe }}</div>
+    {% endif %}
+    
+    {# Reveals section #}
+    {% if clue.reveals %}
+      <div class="reveals-box">
+        <h3>This reveals...</h3>
+        <p>{{ clue.reveals }}</p>
+      </div>
+    {% endif %}
+    
+    <div class="nav-footer">
+      <a href="/clue/index.html" class="button nav-button">← All Clues</a>
+      <a href="/" class="button nav-button">Return to Investigation</a>
+    </div>
+  </div>
+  
+  <script>
+    // Data from template
+    const interpretations = {{ clue.character_interpretations | dump | safe }};
+    document.addEventListener('DOMContentLoaded', () => showCharacterObservation(interpretations));
+  </script>
+</body>
+</html>

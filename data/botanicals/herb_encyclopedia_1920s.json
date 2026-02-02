@@ -1,0 +1,17 @@
+{
+  "id": "herb_encyclopedia_1920s",
+  "title": "Leather-Bound Reference Volume",
+  "name": "Herb Encyclopedia - 1920s Edition",
+  "scientific_name": null,
+  "is_primary": false,
+  "type": "Reference Book - Secondary",
+  "description": "A water-stained leather-bound volume from the 1920s. Contains handwritten annotations throughout the margins.",
+  "reveals": "Encyclopedia with extensive annotations. Notes mark pages on romantic herbs, aphrodisiacs, and botanical research. Shows careful study of ingredients.",
+  "character_interpretations": {
+    "professor": "This handwriting shows meticulous study. The annotations are detailed and systematic. Someone studied this book carefully. Real research, not casual interest.",
+    "baker": "A library book with notes written in margins. I can't read all the annotations, but the fact that someone marked it up tells me they were studying it seriously.",
+    "heiress": "A dusty old book from the library. Haven't read through it thoroughly. It looks important though.",
+    "explorer": "Detailed annotations on botanical and alchemical knowledge. Someone was doing serious research. This shows planning and preparation.",
+    "fiduciary": "A reference book with extensive handwritten notes. The handwriting is consistent and methodical. Someone used this as a serious research guide."
+  }
+}

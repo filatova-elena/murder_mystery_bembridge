@@ -1,0 +1,25 @@
+---
+layout: _base.njk
+title: All Characters
+permalink: /character/index.html
+---
+
+<h1>👥 Characters</h1>
+
+<div style="display: grid; gap: 15px; max-width: 600px; margin: 20px auto;">
+  {% for char in characters %}
+    <a href="/character/{{ char.slug }}.html" 
+       style="display: block; padding: 15px 20px; background: rgba(218, 165, 32, 0.1); 
+              border: 1px solid var(--accent-gold); border-radius: 8px; 
+              text-decoration: none; color: inherit;">
+      <strong>{{ char.title }}</strong>
+      <p style="margin: 5px 0 0 0; font-size: 0.9em; opacity: 0.8;">
+        {{ char.personality | truncate(80) }}
+      </p>
+    </a>
+  {% endfor %}
+</div>
+
+<div class="nav-footer">
+  <a href="/" class="button nav-button">← Back to Investigation</a>
+</div>

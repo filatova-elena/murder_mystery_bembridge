@@ -1,0 +1,29 @@
+---
+layout: _base.njk
+title: The Book
+permalink: /book/index.html
+---
+
+<h1>📖 The Lost Souls of Kennebec Avenue</h1>
+<p style="font-style: italic; margin-bottom: 30px; text-align: center;">The Complete Story</p>
+
+<div style="max-width: 600px; margin: 0 auto;">
+  {% for chapter in bookChapters %}
+    <a href="/book/{{ chapter.slug }}.html" 
+       style="display: block; padding: 15px 20px; margin: 10px 0;
+              background: rgba(218, 165, 32, 0.1); 
+              border: 1px solid var(--accent-gold); border-radius: 8px; 
+              text-decoration: none; color: inherit;">
+      <strong>{{ chapter.title }}</strong>
+      {% if chapter.entries %}
+        <span style="font-size: 0.85em; opacity: 0.7; margin-left: 10px;">
+          {{ chapter.entries.length }} entries
+        </span>
+      {% endif %}
+    </a>
+  {% endfor %}
+</div>
+
+<div class="nav-footer" style="margin-top: 40px;">
+  <a href="/" class="button nav-button">← Return to Investigation</a>
+</div>

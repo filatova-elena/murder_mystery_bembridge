@@ -1,0 +1,95 @@
+/* Clue styles */
+.clue-container { max-width: 800px; margin: 0 auto; }
+.clue-content { 
+  background-color: var(--secondary-dark); 
+  border: 2px solid var(--accent-gold); 
+  padding: 30px; 
+  margin: 20px 0; 
+  line-height: 1.8;
+}
+.clue-content.document {
+  white-space: pre-wrap; 
+  font-family: 'Courier New', monospace; 
+  font-size: 0.95em; 
+}
+.clue-content.journal {
+  font-family: 'Georgia', serif;
+}
+.clue-meta {
+  margin-bottom: 20px;
+}
+.clue-meta p {
+  margin: 5px 0;
+}
+.character-observation {
+  background-color: rgba(218, 165, 32, 0.1);
+  border-left: 4px solid var(--accent-gold);
+  padding: 20px;
+  margin: 20px 0;
+}
+.scientific-name { 
+  font-style: italic; 
+  color: var(--accent-gold); 
+  margin-bottom: 10px;
+}
+.reveals-box {
+  background-color: rgba(139, 69, 19, 0.2);
+  border: 1px solid var(--accent-gold);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Journal-specific styles */
+.journal-container { max-width: 800px; margin: 0 auto; }
+.journal-meta {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--accent-gold);
+}
+.journal-entry {
+  background-color: rgba(212, 165, 116, 0.05);
+  border-left: 3px solid var(--accent-gold);
+  padding: 25px;
+  margin: 20px 0;
+  font-family: 'Georgia', serif;
+  line-height: 1.8;
+}
+.journal-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(218, 165, 32, 0.3);
+}
+.journal-entry-date {
+  color: var(--accent-gold);
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+.journal-entry-title {
+  font-style: italic;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+.journal-entry-meta {
+  font-size: 0.9em;
+  color: var(--accent-gold);
+  opacity: 0.8;
+}
+.journal-entry-content {
+  white-space: pre-wrap;
+}
+.character-observation h4 {
+  margin: 0 0 10px 0;
+  color: var(--accent-gold);
+  font-size: 0.9em;
+}
+.spoiler-warning {
+  background-color: rgba(139, 0, 0, 0.2);
+  border: 1px solid #8b0000;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  font-size: 0.85em;
+  color: #ff6b6b;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "murder-mystery-kennebec",
+  "version": "1.0.0",
+  "description": "The Lost Souls of Kennebec Avenue - A 1920s Murder Mystery",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

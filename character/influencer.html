@@ -8,63 +8,46 @@
 </head>
 <body>
   <div class="container">
-    <h1>The Influencer</h1>
+    <h1 id="character-title">Loading...</h1>
     
     <div class="confirmation">
       <p>You have been assigned the role of:</p>
-      <h2 style="margin: 20px 0;">The Influencer</h2>
+      <h2 id="character-name">Loading...</h2>
     </div>
 
     <div class="message-box">
       <h2>Personality</h2>
-      <p>Content creator documenting everything. This mystery is perfect for your series—if you can debunk the supernatural.</p>
+      <p id="personality">Loading...</p>
     </div>
 
     <div class="message-box">
       <h2>Skills</h2>
-      <p><strong>⭐ Expert:</strong> Rumors, History</p>
+      <div id="skills">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Your Background</h2>
-      <p>You run a popular series called <strong>"Long Beach Urban Legends & Mysteries"</strong> covering local history, unsolved cases, and supernatural claims (which you approach skeptically). You've done episodes on:</p>
-      <ul style="text-align: left; display: inline-block;">
-        <li>The Haunted Montrose Mansion—ghostly sightings, rumors of tragedy</li>
-        <li>The Mysterious Sullivan Bakery Fire—suspicious 1990s fire that destroyed a generations-old bakery</li>
-        <li>The Romano Treasure Legend—mob family wealth that supposedly escaped the IRS</li>
-        <li>Cursed Objects & Fatal Timing—featured your friend the Clockmaker and their mysterious pocket watch</li>
-        <li>The Vanishing Bride—a wealthy woman who disappeared in 1925 then died mysteriously</li>
-        <li>Long Beach Harbor Ghosts—bootleggers and smugglers at the Port</li>
-        <li>The Psychic Sisters—the famous Laveau family and 1920s spiritualism</li>
-      </ul>
-      <p><strong>Your latest research:</strong> Three mysterious deaths in October 1925. All at the same mansion. All within 11 days. And nobody talks about it.</p>
-      <p>When you heard about this investigation at the Montrose mansion, you knew you had to be here. You brought the Clockmaker (who's obsessed with the timing). You're friends with the Baker (featured their bakery on your food channel).</p>
-      <p>This is going to be your best episode yet.</p>
+      <div id="background">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Your Objectives</h2>
-      <ol style="text-align: left; display: inline-block;">
-        <li>Discover the dark truth behind the three spirits bound to this mansion—The Lonely Ghost, The Heartbroken Ghost, and The Cursed Alchemist Ghost.</li>
-        <li><strong>Private (optional):</strong> Uncover the dark truth behind the bakery fire of 1990.</li>
-      </ol>
+      <ol id="objectives">Loading...</ol>
     </div>
 
     <div class="message-box">
       <h2>Your Strategy</h2>
-      <p>Your Expert Rumors skill gives you keys to unlock rumor treasure chests. Your Expert History skill helps with research and source verification. You have access to rumors others don't—share them and let others help separate truth from speculation.</p>
+      <p id="strategy">Loading...</p>
     </div>
 
     <div class="message-box">
       <h2>Key Relationships</h2>
-      <p><strong>The Clockmaker:</strong> You featured them in your series and brought them here. They're obsessed with timing patterns. Your research skills complement their mystical insights, and you may have documented crucial evidence without realizing it.</p>
-      <p><strong>The Baker:</strong> You featured their bakery on your food channel and you're friends. You researched the Sullivan bakery fire for your mysteries series—share your research to help them understand what happened to their family.</p>
-      <p><strong>The Psychic Medium:</strong> You covered the Laveau family psychics in an episode. Your skeptical approach can help verify their claims, while their spiritual insights provide unique perspectives. Together you can separate fact from speculation.</p>
-      <p><strong>Others:</strong> Your documentation skills and research archives make you valuable to the investigation. Share your findings—your research combined with others' knowledge could build a complete picture of what happened.</p>
+      <div id="relationships">Loading...</div>
     </div>
 
     <div class="message-box">
       <h2>Starting Items</h2>
+      <ul id="starting-items">Loading...</ul>
     </div>
 
     <div class="nav-footer">
@@ -74,7 +57,101 @@
 
   <script src="../assets/script.js"></script>
   <script>
-    setCharacter('influencer');
+    const characterName = 'influencer';
+    setCharacter(characterName);
+
+    // Load character data and skills
+    Promise.all([
+      fetch(`../data/character/${characterName}.json`).then(r => r.json()),
+      fetch(`../data/skills.json`).then(r => r.json())
+    ]).then(([character, skills]) => {
+      // Set title and name
+      document.getElementById('character-title').textContent = character.title;
+      document.getElementById('character-name').textContent = character.title;
+
+      // Set personality
+      document.getElementById('personality').textContent = character.personality;
+
+      // Set skills
+      const skillsDiv = document.getElementById('skills');
+      skillsDiv.innerHTML = '';
+      
+      // Expert skills
+      if (character.skills.expert && character.skills.expert.length > 0) {
+        const expertTitles = character.skills.expert.map(skill => skills[skill]?.title || skill).join(', ');
+        const expertP = document.createElement('p');
+        expertP.innerHTML = `<strong>⭐ Expert:</strong> ${expertTitles}`;
+        skillsDiv.appendChild(expertP);
+      }
+
+      // Basic skills
+      if (character.skills.basic && character.skills.basic.length > 0) {
+        const basicTitles = character.skills.basic.map(skill => skills[skill]?.title || skill).join(', ');
+        const basicP = document.createElement('p');
+        basicP.innerHTML = `<strong>📖 Basic knowledge:</strong> ${basicTitles}`;
+        skillsDiv.appendChild(basicP);
+      }
+
+      // Personal connections
+      if (character.skills.personal && character.skills.personal.length > 0) {
+        const personalTitles = character.skills.personal.map(skill => skills[skill]?.title || skill).join(', ');
+        const personalP = document.createElement('p');
+        personalP.innerHTML = `<strong>👥 Personal Connection:</strong> ${personalTitles}`;
+        skillsDiv.appendChild(personalP);
+      }
+
+      // Set background (preserve original formatting)
+      const backgroundDiv = document.getElementById('background');
+      backgroundDiv.innerHTML = '';
+      const paragraphs = character.background.split(/(?<=\.)\s+(?=[A-Z])/).filter(p => p.trim());
+      paragraphs.forEach(para => {
+        const p = document.createElement('p');
+        p.textContent = para.trim();
+        backgroundDiv.appendChild(p);
+      });
+
+      // Set objectives
+      const objectivesOl = document.getElementById('objectives');
+      objectivesOl.innerHTML = '';
+      const mainLi = document.createElement('li');
+      mainLi.textContent = character.objectives.main;
+      objectivesOl.appendChild(mainLi);
+      const privateLi = document.createElement('li');
+      privateLi.innerHTML = `<strong>Private (optional):</strong> ${character.objectives.private}`;
+      objectivesOl.appendChild(privateLi);
+
+      // Set strategy
+      document.getElementById('strategy').textContent = character.strategy;
+
+      // Set relationships
+      const relationshipsDiv = document.getElementById('relationships');
+      relationshipsDiv.innerHTML = '';
+      Object.entries(character.relationships).forEach(([key, value]) => {
+        const p = document.createElement('p');
+        const title = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+        p.innerHTML = `<strong>The ${title}:</strong> ${value}`;
+        relationshipsDiv.appendChild(p);
+      });
+
+      // Set starting items
+      const startingItemsUl = document.getElementById('starting-items');
+      startingItemsUl.innerHTML = '';
+      if (character.starting_items && character.starting_items.length > 0) {
+        character.starting_items.forEach(item => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.link;
+          a.textContent = item.name;
+          li.appendChild(a);
+          startingItemsUl.appendChild(li);
+        });
+      } else {
+        startingItemsUl.innerHTML = '<li>None</li>';
+      }
+    }).catch(error => {
+      console.error('Error loading character data:', error);
+      document.body.innerHTML = '<div class="container"><h1>Error loading character data</h1></div>';
+    });
   </script>
 </body>
 </html>

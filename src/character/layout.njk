@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ charData.title }} - The Lost Souls of Kennebec Avenue</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script defer src="/assets/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setCharacter('{{ charData.slug }}');
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ charData.title }}</h1>
+
+    <div class="confirmation">
+      <p>You have been assigned the role of:</p>
+      <h2>{{ charData.title }}</h2>
+    </div>
+
+    <div class="message-box">
+      <h2>Personality</h2>
+      <p>{{ charData.personality }}</p>
+    </div>
+
+    <div class="message-box">
+      <h2>Skills</h2>
+      
+      {% if charData.skills.expert and charData.skills.expert.length %}
+        <p>
+          <strong>⭐ Expert:</strong> 
+          {% for skill in charData.skills.expert %}
+            {{ skills[skill].title or skill }}{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+      {% endif %}
+      
+      {% if charData.skills.basic and charData.skills.basic.length %}
+        <p>
+          <strong>📖 Basic knowledge:</strong> 
+          {% for skill in charData.skills.basic %}
+            {{ skills[skill].title or skill }}{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+      {% endif %}
+      
+      {% if charData.skills.personal and charData.skills.personal.length %}
+        <p>
+          <strong>👥 Personal Connection:</strong> 
+          {% for skill in charData.skills.personal %}
+            {{ skills[skill].title or skill }}{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+      {% endif %}
+    </div>
+
+    <div class="message-box">
+      <h2>Your Background</h2>
+      <p>{{ charData.background }}</p>
+    </div>
+
+    <div class="message-box">
+      <h2>Your Objectives</h2>
+      <ol>
+        <li>{{ charData.objectives.main }}</li>
+        <li><strong>Private (optional):</strong> {{ charData.objectives.private }}</li>
+      </ol>
+    </div>
+
+    <div class="message-box">
+      <h2>Your Strategy</h2>
+      <p>{{ charData.strategy }}</p>
+    </div>
+
+    <div class="message-box">
+      <h2>Key Relationships</h2>
+      {% for key, value in charData.relationships %}
+        <p><strong>The {{ key | capitalize | replace("_", " ") }}:</strong> {{ value }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="message-box">
+      <h2>Starting Items</h2>
+      <ul>
+        {% if charData.starting_items and charData.starting_items.length %}
+          {% for item in charData.starting_items %}
+            <li><a href="{{ item.link }}">{{ item.name }}</a></li>
+          {% endfor %}
+        {% else %}
+          <li>None</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="nav-footer">
+      <a href="/" class="button nav-button">Begin Investigation</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -53,3 +53,7 @@ qr_codes/
 .cache/
 *.cache
 *.tmp
+
+# Eleventy build output
+_site/
+node_modules/

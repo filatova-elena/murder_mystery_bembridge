@@ -1,0 +1,10 @@
+{
+  "id": "crystal_ball",
+  "name": "Crystal Ball - Antique Scrying Sphere",
+  "type": "Personal Item - Spiritual Tool",
+  "location": "With Psychic Medium character (family archives / personal collection)",
+  "description": "A clear quartz crystal sphere mounted on an ornate brass stand, with subtle internal cloud patterns.",
+  "character_interpretations": {
+    "psychic": "This crystal ball belonged to my predecessor in the psychic arts. I recognize the internal cloud patterns—they shift when someone with genuine sensitivity holds it. The brass base contains handwritten notes from readings conducted in the 1920s, including records of Alice Whitmore's training as a medium. When I hold this sphere, I can sense the weight of what Alice felt—the burden of knowing, of seeing things others cannot. Alice saw something about the 1925 deaths. I'm certain of it. This crystal holds her secrets."
+  }
+}

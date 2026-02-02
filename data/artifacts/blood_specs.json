@@ -1,0 +1,16 @@
+{
+  "id": "blood_specs",
+  "is_primary": true,
+  "name": "Silver Candle Holder",
+  "type": "Artifact - Biological Evidence",
+  "location": "Montrose Mansion main room",
+  "description": "An ornate silver candle holder with intricate decorative patterns, noticeably heavy and substantial.",
+  "character_interpretations": {
+    "doctor": "Silver candle holder, quite heavy. What's that? *examines closely* Looks like tiny blood splatter on the surface. I could try to test it for DNA, see if we can match it to the victims. The weight of this thing, combined with those impact marks... this could definitely cause a serious injury.",
+    "mortician": "Silver candle holder, very heavy. I notice red specs on it. Is that blood? *leans in closer* Look at that splatter pattern. The droplets are concentrated on one side, which tells me the impact came from a specific direction. See how they radiate? This wasn't a blow from the front—the victim wouldn't have seen it coming. The angle suggests they were struck from behind. The back of the head or skull. No defensive wounds expected if they never saw the attack. This was sudden. Brutal. The person holding this candle holder had the element of complete surprise.",
+    "art_collector": "A valuable ornate silver piece, likely 19th century or earlier. The craftsmanship is exceptional—this is family heirloom quality. Interestingly, this doesn't bear the hallmarks of Romano artifacts. The style and origin suggest it came from the Montrose family collection, not the smuggling operation. This is old money, old family.",
+    "heiress": "This candle holder has been in the mansion for generations. I remember seeing it on old photos.",
+    "explorer": "The silver and decorative style suggest European origin, likely English or possibly French from the 18th or 19th century. The craftsmanship indicates a master silversmith's work. This type of piece typically came through legitimate import channels, not smuggling operations. The manufacturing marks should help identify the origin workshop.",
+    "dressmaker": "Cordelia always hated this kind of grotesque, overly ornate decoration. She found it excessive and garish. She would complain about the mansion's heavy, oppressive aesthetic—all these ostentatious pieces everywhere. She preferred clean lines and simplicity. This candle holder represents everything she disliked about the mansion she was forced to inhabit."
+  }
+}

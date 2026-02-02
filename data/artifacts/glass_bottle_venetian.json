@@ -1,0 +1,11 @@
+{
+  "id": "glass_bottle_venetian",
+  "name": "Ornate Venetian Glass Bottle",
+  "type": "Decorative Vessel - Family Heirloom",
+  "location": "With Art Collector character",
+  "description": "A decorative bottle made of emerald green glass with gold leaf detailing and an ornate stopper.",
+  "character_interpretations": {
+    "art_collector": "Authentic Venetian glass, early 20th century craftsmanship. The gold leaf detailing and weight indicate this was expensive, prestigious. During Prohibition, ornate glass bottles like this were perfect for concealing valuable contraband while maintaining plausible deniability as decorative pieces. This bottle passed through Harbor Import & Trading Co.—I've seen it documented in historical records. It's a beautiful piece, but it tells a story of smuggling operations.",
+    "explorer": "This bottle was imported through Harbor Import & Trading Co. during Prohibition—check manifests from 1920-1925 for its arrival date. The decorative purpose makes it perfect cover for moving contraband. If Sebastian Crane was connected to the Romanos, this bottle might contain clues about their relationship. Examine the stopper carefully—ornate bottles sometimes have hidden switches or removable components. This is part of the smuggling network's supply chain."
+  }
+}
